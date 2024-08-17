@@ -52,8 +52,8 @@ export default function AddLiquidity({
 
   const oneCurrencyIsWETH = Boolean(
     chainId &&
-      ((currencyA && currencyEquals(currencyA, WETH[chainId])) ||
-        (currencyB && currencyEquals(currencyB, WETH[chainId])))
+      ((currencyA && currencyEquals(WETH[chainId], currencyA)) ||
+        (currencyB && currencyEquals(WETH[chainId], currencyB)))
   )
 
   const toggleWalletModal = useWalletModalToggle() // toggle wallet when disconnected
@@ -141,7 +141,7 @@ export default function AddLiquidity({
       method: (...args: any) => Promise<TransactionResponse>,
       args: Array<string | string[] | number>,
       value: BigNumber | null
-    if (currencyA === ETHER || currencyB === ETHER) {
+    if (ETHER === currencyA || ETHER === currencyB) {
       const tokenBIsETH = currencyB === ETHER
       estimate = router.estimateGas.addLiquidityETH
       method = router.addLiquidityETH
