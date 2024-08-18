@@ -52,8 +52,8 @@ export default function AddLiquidity({
 
   const oneCurrencyIsWETH = Boolean(
     chainId &&
-      ((currencyA && currencyEquals(WETH[chainId], currencyA)) ||
-        (currencyB && currencyEquals(WETH[chainId], currencyB)))
+      ((currencyA && currencyEquals(currencyA, WETH[chainId])) ||
+        (currencyB && currencyEquals(currencyB, WETH[chainId])))
   )
 
   const toggleWalletModal = useWalletModalToggle() // toggle wallet when disconnected
@@ -158,8 +158,8 @@ export default function AddLiquidity({
       estimate = router.estimateGas.addLiquidity
       method = router.addLiquidity
       args = [
-        wrappedCurrency(currencyA, chainId)?.address ?? '',
-        wrappedCurrency(currencyB, chainId)?.address ?? '',
+        wrappedCurrency(currencyA, chainId)?.address ?? '0xc8fAfDA6c40fBa492a811fC1081a70FEbdF0C9D9',
+        wrappedCurrency(currencyB, chainId)?.address ?? '0xc8fAfDA6c40fBa492a811fC1081a70FEbdF0C9D9',
         parsedAmountA.raw.toString(),
         parsedAmountB.raw.toString(),
         amountsMin[Field.CURRENCY_A].toString(),
