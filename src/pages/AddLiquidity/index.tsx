@@ -158,8 +158,8 @@ export default function AddLiquidity({
       estimate = router.estimateGas.addLiquidity
       method = router.addLiquidity
       args = [
-        wrappedCurrency(currencyA, chainId)?.address ?? '0xc8fAfDA6c40fBa492a811fC1081a70FEbdF0C9D9',
-        wrappedCurrency(currencyB, chainId)?.address ?? '0xc8fAfDA6c40fBa492a811fC1081a70FEbdF0C9D9',
+        wrappedCurrency(currencyA, chainId)?.address ?? '',
+        wrappedCurrency(currencyB, chainId)?.address ?? '',
         parsedAmountA.raw.toString(),
         parsedAmountB.raw.toString(),
         amountsMin[Field.CURRENCY_A].toString(),

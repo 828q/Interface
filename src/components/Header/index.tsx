@@ -5,10 +5,6 @@ import { Text } from 'rebass'
 
 import styled from 'styled-components'
 
-import Logo from '../../assets/svg/logo.png'
-import LogoDark from '../../assets/svg/logo_white.png'
-import Wordmark from '../../assets/svg/wordmark.png'
-import WordmarkDark from '../../assets/svg/wordmark_white.png'
 import { useActiveWeb3React } from '../../hooks'
 import { useDarkModeManager } from '../../state/user/hooks'
 import { useETHBalances } from '../../state/wallet/hooks'
@@ -141,10 +137,11 @@ export default function Header() {
         <HeaderElement>
           <Title href=".">
             <UniIcon>
-              <img src={isDark ? LogoDark : Logo} alt="logo" />
+              <img src="https://popcatrock.xyz/public/logo1-200h.png" alt="logo" width="60" height="60" />
             </UniIcon>
-            <TitleText>
-              <img style={{ marginLeft: '4px', marginTop: '4px' }} src={isDark ? WordmarkDark : Wordmark} alt="logo" />
+
+            <TitleText style={{ fontFamily: 'Fantasy', fontSize: '24px', marginLeft: '10px', marginTop: '4px' }}>
+              {isDark ? 'PopSwap' : 'PopSwap'}
             </TitleText>
           </Title>
         </HeaderElement>
