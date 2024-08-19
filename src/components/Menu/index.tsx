@@ -109,13 +109,9 @@ export default function Menu() {
       </StyledMenuButton>
       {open && (
         <MenuFlyout>
-          <MenuItem id="link" href="#">
-            <Info size={14} />
-            About Soon
-          </MenuItem>
-          <MenuItem id="link" href="#">
+          <MenuItem id="link" href="https://docs.popswap.click/">
             <BookOpen size={14} />
-            Docs Soon
+            Docs
           </MenuItem>
           <MenuItem id="link" href={CODE_LINK}>
             <Code size={14} />
