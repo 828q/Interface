@@ -4,7 +4,7 @@ import { ChainId } from '@popswap/sdk'
 
 import { injected, walletconnect, walletlink } from '../connectors'
 
-export const ROUTER_ADDRESS = '0x81a6A11Df566e300f2aDf7AE2b86Ac3213eF1FCd'
+export const ROUTER_ADDRESS = '0x28011841A9E8D782a3B58da3e757fc939cca84B3'
 
 // a list of tokens by chain
 type ChainTokenList = {
