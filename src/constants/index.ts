@@ -4,7 +4,7 @@ import { ChainId } from '@popswap/sdk'
 
 import { injected, walletconnect, walletlink } from '../connectors'
 
-export const ROUTER_ADDRESS = '0x6f7F313B2966f6502648c30574f8209A993bb384'
+export const ROUTER_ADDRESS = '0x28011841a9e8d782a3b58da3e757fc939cca84b3'
 
 // a list of tokens by chain
 type ChainTokenList = {
@@ -12,8 +12,7 @@ type ChainTokenList = {
 }
 
 export const USDC = new Token(ChainId.MAINNET, '0xD647a6E1F898c39bA594443c19De0872EA935310', 6, 'USDB', 'USDBrock')
-export const COMP = new Token(ChainId.MAINNET, '0xc00e94Cb662C3520282E6f5717214004A7f26888', 18, 'COMP', 'Compound')
-export const MKR = new Token(ChainId.MAINNET, '0x9f8F72aA9304c8B593d555F12eF6589cC3A579A2', 18, 'MKR', 'Maker')
+export const POPCAT = new Token(ChainId.MAINNET, '0xdce5726e3bc8e1f574416978279bb0ae62ab3c15', 18, 'POPCAT', 'PopCatRock')
 export const AMPL = new Token(ChainId.MAINNET, '0xD46bA6D942050d489DBd938a2C909A5d5039A161', 9, 'AMPL', 'Ampleforth')
 
 const WETH_ONLY: ChainTokenList = {
@@ -23,7 +22,7 @@ const WETH_ONLY: ChainTokenList = {
 // used to construct intermediary pairs for trading
 export const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
   ...WETH_ONLY,
-  [ChainId.MAINNET]: [...WETH_ONLY[ChainId.MAINNET], USDC, COMP, MKR]
+  [ChainId.MAINNET]: [...WETH_ONLY[ChainId.MAINNET], USDC]
 }
 
 /**
@@ -51,7 +50,7 @@ export const BASES_TO_TRACK_LIQUIDITY_FOR: ChainTokenList = {
 export const PINNED_PAIRS: { readonly [chainId in ChainId]?: [Token, Token][] } = {
   [ChainId.MAINNET]: [
     [
-      new Token(ChainId.MAINNET, '0x5d3a536E4D6DbD6114cc1Ead35777bAB948E3643', 8, 'cDAI', 'Compound Dai'),
+      new Token(ChainId.MAINNET, '0xdce5726e3bc8e1f574416978279bb0ae62ab3c15', 8, 'POPCAT', 'PopCatRock'),
       new Token(ChainId.MAINNET, '0x39AA39c021dfbaE8faC545936693aC917d5E7563', 8, 'cUSDC', 'Compound USD Coin')
     ],
    // [USDC, USDT],

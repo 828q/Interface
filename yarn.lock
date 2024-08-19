@@ -1888,10 +1888,10 @@
   resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.4.4.tgz#11d5db19bd178936ec89cd84519c4de439574398"
   integrity sha512-1oO6+dN5kdIA3sKPZhRGJTfGVP4SWV6KqlMOwry4J3HfyD68sl/3KmG7DeYUzvN+RbhXDnv/D8vNNB8168tAMg==
 
-"@popswap/sdk@1.0.9":
-  version "1.0.9"
-  resolved "https://registry.yarnpkg.com/@popswap/sdk/-/sdk-1.0.9.tgz#545fe885962a19cf4c26313f4b7fd66a8d72aadc"
-  integrity sha512-DdgsIYECfLrlRSmHJ/bOHeMD2o+FJc4Be7wT1/0E86h9FVGv0MoyYS8Xxm4Xe/I3ySKITQ7Pa55MIzFFfvLqVg==
+"@popswap/sdk@1.0.8":
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/@popswap/sdk/-/sdk-1.0.8.tgz#166454cfaaf3731f391a32e7779649b4f36b2f4b"
+  integrity sha512-y4NZKTwSXEktQ5m+Ok5D2uSZAeTy6IuYy1Rz67+dJKxvNCnUlCKoC+KJ9H2q4NcPTcs+Y0iBQwHOX6RugR24NA==
   dependencies:
     "@opus-fi/core" "^1.0.2"
     big.js "^5.2.2"
