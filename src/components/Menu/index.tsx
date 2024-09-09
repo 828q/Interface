@@ -121,7 +121,7 @@ export default function Menu() {
             <MessageCircle size={14} />
             Telegram
           </MenuItem>
-          <MenuItem id="link" href="https://dextools.io/">
+          <MenuItem id="link" href="https://www.geckoterminal.com/bitrock/popswap/pools">
             <PieChart size={14} />
             Charts
           </MenuItem>
