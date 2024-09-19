@@ -43,6 +43,24 @@ const StyledNavLink = styled(NavLink).attrs({
   }
 `
 
+const StyledAnchor = styled.a`
+  ${({ theme }) => theme.flexRowNoWrap}
+  align-items: center;
+  justify-content: center;
+  height: 3rem;
+  border-radius: 3rem;
+  outline: none;
+  cursor: pointer;
+  text-decoration: none;
+  color: ${({ theme }) => theme.text3};
+  font-size: 20px;
+
+  &:hover,
+  &:focus {
+    color: ${({ theme }) => darken(0.1, theme.text1)};
+  }
+`
+
 const ActiveText = styled.div`
   font-weight: 500;
   font-size: 20px;
@@ -52,7 +70,7 @@ const StyledArrowLeft = styled(ArrowLeft)`
   color: ${({ theme }) => theme.text1};
 `
 
-export function SwapPoolTabs({ active }: { active: 'swap' | 'pool' }) {
+export function SwapPoolTabs({ active }: { active: 'swap' | 'pool' | 'Cross-Chain'}) {
   const { t } = useTranslation()
   return (
     <Tabs style={{ marginBottom: '20px' }}>
@@ -62,6 +80,9 @@ export function SwapPoolTabs({ active }: { active: 'swap' | 'pool' }) {
       <StyledNavLink id={`pool-nav-link`} to={'/pool'} isActive={() => active === 'pool'}>
         {t('pool')}
       </StyledNavLink>
+      <StyledAnchor id={`crosschain-nav-link`} href={'https://multichain.popswap.click/'}>
+        {t('Cross-Chain')}
+      </StyledAnchor>
     </Tabs>
   )
 }
