@@ -113,9 +113,9 @@ export default function Menu() {
             <BookOpen size={14} />
             Docs
           </MenuItem>
-          <MenuItem id="link" href={CODE_LINK}>
+          <MenuItem id="link" href="https://x.com/popcatrock">
             <Code size={14} />
-            Code Soon
+            Twitter
           </MenuItem>
           <MenuItem id="link" href="https://t.me/popcatrock">
             <MessageCircle size={14} />
