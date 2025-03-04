@@ -137,7 +137,7 @@ export default function Header() {
         <HeaderElement>
           <Title href=".">
             <UniIcon>
-              <img src="https://popcatrock.xyz/0xdce5726e3bc8e1f574416978279bb0ae62ab3c15-200h.png" alt="logo" width="60" height="60" />
+              <img src="https://raw.githubusercontent.com/PopCatRock/token-list/main/src/tokens/CoinLogos/0x0FC14d74b66EFa44AccBBe284cCdD356039e59dC.png" alt="logo" width="60" height="60" />
             </UniIcon>
 
             <TitleText style={{ fontFamily: 'Fantasy', fontSize: '24px', marginLeft: '10px', marginTop: '4px' }}>
