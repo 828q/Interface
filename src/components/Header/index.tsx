@@ -104,7 +104,7 @@ const UniIcon = styled.div`
     height: auto;
 
     ${({ theme }) => theme.mediaWidth.upToSmall`
-      width: 40px;
+      width: 55px;
     `}
   }
 `
