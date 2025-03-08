@@ -94,14 +94,19 @@ const NetworkCard = styled(YellowCard)`
 
 const UniIcon = styled.div`
   transition: transform 0.3s ease;
+
   :hover {
     transform: rotate(-5deg);
   }
-  ${({ theme }) => theme.mediaWidth.upToSmall`
-    img { 
-      width: 4.5rem;
-    }
-  `};
+
+  img {
+    width: 60px;
+    height: auto;
+
+    ${({ theme }) => theme.mediaWidth.upToSmall`
+      width: 40px;
+    `}
+  }
 `
 
 const HeaderControls = styled.div`
@@ -137,10 +142,13 @@ export default function Header() {
         <HeaderElement>
           <Title href=".">
             <UniIcon>
-              <img src="https://raw.githubusercontent.com/PopCatRock/token-list/main/src/tokens/CoinLogos/0x0FC14d74b66EFa44AccBBe284cCdD356039e59dC.png" alt="logo" width="60" height="60" />
+              <img 
+                src="https://raw.githubusercontent.com/PopCatRock/token-list/main/src/tokens/CoinLogos/0x0FC14d74b66EFa44AccBBe284cCdD356039e59dC.png" 
+                alt="logo"
+                />
             </UniIcon>
 
-            <TitleText style={{ fontFamily: 'Fantasy', fontSize: '24px', marginLeft: '10px', marginTop: '4px' }}>
+            <TitleText style={{ fontFamily: 'Impact', fontSize: '24px', marginLeft: '10px', marginTop: '4px' }}>
               {isDark ? 'PopSwap' : 'PopSwap'}
             </TitleText>
           </Title>
