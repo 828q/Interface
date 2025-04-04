@@ -41,49 +41,45 @@ export function colors(darkMode: boolean): Colors {
     black,
 
     // text
-    text1: darkMode ? '#DAA520' : '#1F2937', // Darker golden color for dark mode, dark grey for light mode
-    text2: darkMode ? '#B8860B' : '#374151', // Darker golden color for dark mode, grey for light mode
-    text3: darkMode ? '#CD853F' : '#4B5563', // Darker golden color for dark mode, grey for light mode
-    text4: darkMode ? '#8B4513' : '#6B7280', // Darker golden color for dark mode, light grey for light mode
-    text5: darkMode ? '#A0522D' : '#9CA3AF', // Darker golden color for dark mode, lighter grey for light mode
+    text1: darkMode ? '#E0BBFF' : '#3D0075', // Light purple in dark, deep purple in light
+    text2: darkMode ? '#C49BDB' : '#5E2B97',
+    text3: darkMode ? '#A87CB0' : '#7A42B2',
+    text4: darkMode ? '#8D6A99' : '#A87CB0',
+    text5: darkMode ? '#5E2B97' : '#E0BBFF',
 
     // backgrounds / greys
-    bg1: darkMode ? '#212429' : '#F9FAFB', // Dark background for dark mode, light grey for light mode
-    bg2: darkMode ? '#2C2F36' : '#F3F4F6', // Dark background for dark mode, light grey for light mode
-    bg3: darkMode ? '#40444F' : '#E5E7EB', // Dark background for dark mode, light grey for light mode
-    bg4: darkMode ? '#565A69' : '#D1D5DB', // Dark background for dark mode, light grey for light mode
-    bg5: darkMode ? '#565A69' : '#9CA3AF', // Dark background for dark mode, grey for light mode
+    bg1: darkMode ? '#1E1B29' : '#F5F0FF', // Deep purple-black in dark, light lavender in light
+    bg2: darkMode ? '#2A253B' : '#EDE4FF',
+    bg3: darkMode ? '#3B3355' : '#DED1FF',
+    bg4: darkMode ? '#4E3F6B' : '#C4A9E3',
+    bg5: darkMode ? '#5E4A7A' : '#B598D1',
 
     // specialty colors
-    modalBG: darkMode ? 'rgba(0,0,0,0.425)' : 'rgba(0,0,0,0.3)',
-    advancedBG: darkMode ? 'rgba(0,0,0,0.1)' : 'rgba(255,255,255,0.6)',
+    modalBG: darkMode ? 'rgba(30, 27, 41, 0.8)' : 'rgba(245, 240, 255, 0.8)',
+    advancedBG: darkMode ? 'rgba(60, 50, 80, 0.6)' : 'rgba(240, 225, 255, 0.6)',
 
-    // primary colors
-    primary1: darkMode ? '#DAA520' : '#3B82F6', // Darker golden color for dark mode, blue for light mode
-    primary2: darkMode ? '#B8860B' : '#2563EB', // Darker golden color for dark mode, blue for light mode
-    primary3: darkMode ? '#CD853F' : '#1D4ED8', // Darker golden color for dark mode, blue for light mode
-    primary4: darkMode ? '#8B451370' : '#93C5FD', // Darker golden color for dark mode, light blue for light mode
-    primary5: darkMode ? '#A0522D70' : '#BFDBFE', // Darker golden color for dark mode, lighter blue for light mode
+    // primary colors (focused on purple shades)
+    primary1: darkMode ? '#9B59B6' : '#A569BD',
+    primary2: darkMode ? '#8E44AD' : '#BB8FCE',
+    primary3: darkMode ? '#7D3C98' : '#D2B4DE',
+    primary4: darkMode ? '#5B2C6F' : '#E8DAEF',
+    primary5: darkMode ? '#4A235A' : '#F4ECF7',
 
     // color text
-    primaryText1: darkMode ? '#DAA520' : '#1E40AF', // Darker golden color for dark mode, blue for light mode
+    primaryText1: darkMode ? '#D7BDE2' : '#7D3C98',
 
     // secondary colors
-    secondary1: darkMode ? '#DAA520' : '#60A5FA', // Darker golden color for dark mode, blue for light mode
-    secondary2: darkMode ? '#DAA52026' : '#BFDBFE', // Darker golden color for dark mode, light blue for light mode
-    secondary3: darkMode ? '#DAA52026' : '#E0EFFF', // Darker golden color for dark mode, very light blue for light mode
+    secondary1: darkMode ? '#A569BD' : '#9B59B6',
+    secondary2: darkMode ? '#7D3C9855' : '#E8DAEF',
+    secondary3: darkMode ? '#5B2C6F55' : '#F4ECF7',
 
     // other
-    red1: darkMode ? '#FF4500' : '#DC2626',
-    red2: darkMode ? '#FF0000' : '#EF4444',
-    green1: darkMode ? '#9ACD32' : '#10B981',
-    yellow1: darkMode ? '#DAA520' : '#FBBF24', // Darker golden color for dark mode, yellow for light mode
-    yellow2: darkMode ? '#B8860B' : '#F59E0B' // Darker golden color for dark mode, yellow for light mode
-
-    // don't wanna forget these blue yet
-    // blue4: darkMode ? '#DAA52070' : '#C4D9F8', // Darker golden color for dark mode, blue for light mode
-    // blue5: darkMode ? '#DAA52070' : '#EBF4FF', // Darker golden color for dark mode, blue for light mode
-  }
+    red1: '#FF6B81',
+    red2: '#E74C3C',
+    green1: '#27AE60',
+    yellow1: '#F1C40F',
+    yellow2: '#F39C12'
+  };
 }
 
 export function theme(darkMode: boolean): DefaultTheme {
