@@ -102,6 +102,9 @@ const UniIcon = styled.div`
   img {
     width: 60px;
     height: auto;
+    border-radius: 50%;
+    object-fit: cover;
+    background-color: transparent;
 
     ${({ theme }) => theme.mediaWidth.upToSmall`
       width: 55px;
@@ -143,7 +146,7 @@ export default function Header() {
           <Title href=".">
             <UniIcon>
               <img 
-                src="https://raw.githubusercontent.com/PopCatRock/token-list/main/src/tokens/CoinLogos/0x0FC14d74b66EFa44AccBBe284cCdD356039e59dC.png" 
+                src="https://i.postimg.cc/QNmrSjbZ/photo-5953868637527983449-x-removebg-preview.png" 
                 alt="logo"
                 />
             </UniIcon>

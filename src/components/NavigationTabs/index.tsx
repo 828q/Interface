@@ -70,7 +70,7 @@ const StyledArrowLeft = styled(ArrowLeft)`
   color: ${({ theme }) => theme.text1};
 `
 
-export function SwapPoolTabs({ active }: { active: 'swap' | 'pool' | 'Cross-Chain'}) {
+export function SwapPoolTabs({ active }: { active: 'swap' | 'pool' }) {
   const { t } = useTranslation()
   return (
     <Tabs style={{ marginBottom: '20px' }}>
@@ -80,9 +80,6 @@ export function SwapPoolTabs({ active }: { active: 'swap' | 'pool' | 'Cross-Chai
       <StyledNavLink id={`pool-nav-link`} to={'/pool'} isActive={() => active === 'pool'}>
         {t('pool')}
       </StyledNavLink>
-      <StyledAnchor id={`crosschain-nav-link`} href={'https://multichain.popswap.click/'}>
-        {t('Cross-Chain')}
-      </StyledAnchor>
     </Tabs>
   )
 }
