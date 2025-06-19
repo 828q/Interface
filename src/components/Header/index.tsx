@@ -146,12 +146,12 @@ export default function Header() {
           <Title href=".">
             <UniIcon>
               <img 
-                src="https://i.postimg.cc/QNmrSjbZ/photo-5953868637527983449-x-removebg-preview.png" 
+                src="https://raw.githubusercontent.com/PopCatRock/token-list/refs/heads/master/src/tokens/CoinLogos/0x0FC14d74b66EFa44AccBBe284cCdD356039e59dC.png" 
                 alt="logo"
                 />
             </UniIcon>
 
-            <TitleText style={{ fontFamily: 'Impact', fontSize: '24px', marginLeft: '10px', marginTop: '4px' }}>
+            <TitleText style={{ fontFamily: 'Comic Sans MS', fontSize: '24px', marginLeft: '10px', marginTop: '4px' }}>
               {isDark ? 'PopSwap' : 'PopSwap'}
             </TitleText>
           </Title>
