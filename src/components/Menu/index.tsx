@@ -77,7 +77,6 @@ const MenuItem = styled(ExternalLink)`
   }
 `
 
-const CODE_LINK = '#'
 
 export default function Menu() {
   const node = useRef<HTMLDivElement>()
