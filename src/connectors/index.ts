@@ -29,7 +29,7 @@ export const walletconnect = new WalletConnectConnector({
 // mainnet only
 export const walletlink = new WalletLinkConnector({
   url: 'https://connect.bit-rock.io',
-  appName: 'PopSwap',
+  appName: 'CateSwap',
   appLogoUrl:
     'https://popcatrock.xyz/assets/popcatr.png'
 })
