@@ -99,5 +99,7 @@
     ]
   },
   "license": "GPL-3.0-or-later",
-  "dependencies": {}
+  "dependencies": {
+    "thirdweb": "^5.121.1"
+  }
 }
