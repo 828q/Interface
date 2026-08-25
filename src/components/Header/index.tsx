@@ -15,6 +15,7 @@ import Menu from '../Menu'
 
 import Row, { RowBetween } from '../Row'
 import Web3Status from '../Web3Status'
+import ThirdwebWalletButton from '../ThirdwebWalletButton'
 
 const HeaderFrame = styled.div`
   display: flex;
@@ -168,6 +169,7 @@ export default function Header() {
                 </BalanceText>
               ) : null}
               <Web3Status />
+              <ThirdwebWalletButton />
             </AccountElement>
           </HeaderElement>
           <HeaderElementWrap>
