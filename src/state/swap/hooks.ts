@@ -197,7 +197,7 @@ function parseCurrencyFromURLParameter(urlParam: any): string {
     if (urlParam.toUpperCase() === 'BROCK') return 'BROCK'
     if (valid === false) return 'BROCK'
   }
-  return 'BROCK' ?? ''
+  return 'BROCK'
 }
 
 function parseTokenAmountURLParameter(urlParam: any): string {
