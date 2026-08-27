@@ -152,7 +152,7 @@ export default function Header() {
             </UniIcon>
 
             <TitleText style={{ fontFamily: 'Comic Sans MS', fontSize: '24px', marginLeft: '10px', marginTop: '4px' }}>
-              {isDark ? 'CateSwap' : 'CateSwap'}
+              {isDark ? 'RaptoX' : 'RaptoX'}
             </TitleText>
           </Title>
         </HeaderElement>
