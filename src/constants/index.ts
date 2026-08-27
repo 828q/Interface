@@ -12,7 +12,8 @@ type ChainTokenList = {
 }
 
 export const USDC = new Token(ChainId.MAINNET, '0xD647a6E1F898c39bA594443c19De0872EA935310', 6, 'USDB', 'USDBrock')
-export const POPCAT = new Token(ChainId.MAINNET, '0xdce5726e3bc8e1f574416978279bb0ae62ab3c15', 18, 'POPCAT', 'PopCatRock')
+// CHANGE CA 
+export const RPTX = new Token(ChainId.MAINNET, '0xdce5726e3bc8e1f574416978279bb0ae62ab3c15', 18, 'RPTX', 'RaptoX')
 export const AMPL = new Token(ChainId.MAINNET, '0xD46bA6D942050d489DBd938a2C909A5d5039A161', 9, 'AMPL', 'Ampleforth')
 
 const WETH_ONLY: ChainTokenList = {
