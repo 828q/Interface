@@ -1,4 +1,4 @@
-import { Currency, currencyEquals, ETHER, WETH } from '@popswap/sdk'
+import { Currency, currencyEquals, ETHER, WETH } from '@raptordex/sdk'
 import { useMemo } from 'react'
 import { tryParseAmount } from '../state/swap/hooks'
 import { useTransactionAdder } from '../state/transactions/hooks'
@@ -44,13 +44,13 @@ export default function useWrapCallback(
             ? async () => {
                 try {
                   const txReceipt = await wethContract.deposit({ value: `0x${inputAmount.raw.toString(16)}` })
-                  addTransaction(txReceipt, { summary: `Wrap ${inputAmount.toSignificant(6)} BROCK to WBROCK` })
+                  addTransaction(txReceipt, { summary: `Wrap ${inputAmount.toSignificant(6)} RPTR to WRPTR` })
                 } catch (error) {
                   console.error('Could not deposit', error)
                 }
               }
             : undefined,
-        inputError: sufficientBalance ? undefined : 'Insufficient BROCK balance'
+        inputError: sufficientBalance ? undefined : 'Insufficient RPTR balance'
       }
     } else if (currencyEquals(WETH[chainId], inputCurrency) && outputCurrency === ETHER) {
       return {
@@ -60,13 +60,13 @@ export default function useWrapCallback(
             ? async () => {
                 try {
                   const txReceipt = await wethContract.withdraw(`0x${inputAmount.raw.toString(16)}`)
-                  addTransaction(txReceipt, { summary: `Unwrap ${inputAmount.toSignificant(6)} WBROCK to BROCK` })
+                  addTransaction(txReceipt, { summary: `Unwrap ${inputAmount.toSignificant(6)} WRPTR to RPTR` })
                 } catch (error) {
                   console.error('Could not withdraw', error)
                 }
               }
             : undefined,
-        inputError: sufficientBalance ? undefined : 'Insufficient WBROCK balance'
+        inputError: sufficientBalance ? undefined : 'Insufficient WRPTR balance'
       }
     } else {
       return NOT_APPLICABLE

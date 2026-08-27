@@ -1,4 +1,4 @@
-import { Percent } from '@popswap/sdk'
+import { Percent } from '@raptordex/sdk'
 import React from 'react'
 import { ONE_BIPS } from '../../constants'
 import { warningSeverity } from '../../utils/prices'

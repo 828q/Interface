@@ -1,4 +1,4 @@
-import { CurrencyAmount, ETHER, JSBI } from '@popswap/sdk'
+import { CurrencyAmount, ETHER, JSBI } from '@raptordex/sdk'
 import { MIN_ETH } from '../constants'
 
 /**

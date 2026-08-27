@@ -15,21 +15,21 @@ export const network = new NetworkConnector({
 })
 
 export const injected = new InjectedConnector({
-  supportedChainIds: [7171]
+  supportedChainIds: [1380996178]
 })
 
 // mainnet only
 export const walletconnect = new WalletConnectConnector({
-  rpc: { 7171: 'https://connect.bit-rock.io' },
-  bridge: 'https://bridge.bit-rock.io',
+  rpc: { 1380996178: 'https://rpc.raptorchain.io/web3' },
+  bridge: 'https://bridge.raptorchain.io',
   qrcode: true,
   pollingInterval: 15000
 })
 
 // mainnet only
 export const walletlink = new WalletLinkConnector({
-  url: 'https://connect.bit-rock.io',
-  appName: 'CateSwap',
+  url: 'https://raptorchain.io/',
+  appName: 'RaptoX',
   appLogoUrl:
-    'https://popcatrock.xyz/assets/popcatr.png'
+    'https://raw.githubusercontent.com/828q/fg47g3gfrh7y5ry3ewh43e92w3yur38ru38ut8u58ut5/refs/heads/main/Untitled_design__10_-removebg-preview.png'
 })

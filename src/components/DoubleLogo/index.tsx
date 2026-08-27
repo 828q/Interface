@@ -1,4 +1,4 @@
-import { Currency } from '@popswap/sdk'
+import { Currency } from '@raptordex/sdk'
 import React from 'react'
 import styled from 'styled-components'
 import CurrencyLogo from '../CurrencyLogo'

@@ -1,6 +1,6 @@
 import { AbstractConnector } from '@web3-react/abstract-connector'
-import { JSBI, Percent, Token, WETH } from '@popswap/sdk'
-import { ChainId } from '@popswap/sdk'
+import { JSBI, Percent, Token, WETH } from '@raptordex/sdk'
+import { ChainId } from '@raptordex/sdk'
 
 import { injected, walletconnect, walletlink } from '../connectors'
 
@@ -139,4 +139,4 @@ export const MIN_ETH: JSBI = JSBI.exponentiate(JSBI.BigInt(10), JSBI.BigInt(16))
 export const BETTER_TRADE_LINK_THRESHOLD = new Percent(JSBI.BigInt(75), JSBI.BigInt(10000))
 
 // the Uniswap Default token list lives here
-export const DEFAULT_TOKEN_LIST_URL = 'https://raw.githubusercontent.com/PopCatRock/token-list/refs/heads/master/src/tokens/mainnet.json'
+export const DEFAULT_TOKEN_LIST_URL = 'https://raw.githubusercontent.com/828q/token-list/refs/heads/main/mainnet.json'

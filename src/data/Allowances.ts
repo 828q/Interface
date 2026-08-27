@@ -1,4 +1,4 @@
-import { Token, TokenAmount } from '@popswap/sdk'
+import { Token, TokenAmount } from '@raptordex/sdk'
 import { useMemo } from 'react'
 
 import { useTokenContract } from '../hooks/useContract'

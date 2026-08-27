@@ -1,4 +1,4 @@
-import { ChainId } from '@popswap/sdk'
+import { ChainId } from '@raptordex/sdk'
 import React, { useContext } from 'react'
 import styled, { ThemeContext } from 'styled-components'
 import Modal from '../Modal'

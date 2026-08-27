@@ -1,4 +1,4 @@
-import { ChainId } from '@popswap/sdk'
+import { ChainId } from '@raptordex/sdk'
 import React from 'react'
 import { isMobile } from 'react-device-detect'
 import { Text } from 'rebass'
@@ -164,7 +164,7 @@ export default function Header() {
             <AccountElement active={!!account} style={{ pointerEvents: 'auto' }}>
               {account && userEthBalance ? (
                 <BalanceText style={{ flexShrink: 0 }} pl="0.75rem" pr="0.5rem" fontWeight={500}>
-                  {userEthBalance?.toSignificant(4)} BROCK
+                  {userEthBalance?.toSignificant(4)} RPTR
                 </BalanceText>
               ) : null}
               <Web3Status />

@@ -1,6 +1,6 @@
 import React, { useContext, useMemo } from 'react'
 import { ThemeContext } from 'styled-components'
-import { Pair } from '@popswap/sdk'
+import { Pair } from '@raptordex/sdk'
 import { Link } from 'react-router-dom'
 import { SwapPoolTabs } from '../../components/NavigationTabs'
 
@@ -58,7 +58,7 @@ export default function Pool() {
       <AppBody>
         <SwapPoolTabs active={'pool'} />
         <AutoColumn gap="lg" justify="center">
-          <ButtonPrimary id="join-pool-button" as={Link} style={{ padding: 16 }} to="/add/BROCK">
+          <ButtonPrimary id="join-pool-button" as={Link} style={{ padding: 16 }} to="/add/RPTR">
             <Text fontWeight={500} fontSize={20}>
               Add Liquidity
             </Text>

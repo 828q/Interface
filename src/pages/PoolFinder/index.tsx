@@ -1,4 +1,4 @@
-import { Currency, ETHER, JSBI, TokenAmount } from '@popswap/sdk'
+import { Currency, ETHER, JSBI, TokenAmount } from '@raptordex/sdk'
 import React, { useCallback, useEffect, useState } from 'react'
 import { Plus } from 'react-feather'
 import { Text } from 'rebass'

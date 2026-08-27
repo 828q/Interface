@@ -1,4 +1,4 @@
-import { currencyEquals, Trade } from '@popswap/sdk'
+import { currencyEquals, Trade } from '@raptordex/sdk'
 import React, { useCallback, useMemo } from 'react'
 import TransactionConfirmationModal, {
   ConfirmationModalContent,
