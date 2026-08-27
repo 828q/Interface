@@ -130,7 +130,7 @@ const BalanceText = styled(Text)`
 `
 
 const NETWORK_LABELS: { [chainId in ChainId]: string | null } = {
-  [ChainId.MAINNET]: 'Bitrock'
+  [ChainId.MAINNET]: 'Raptor'
 }
 
 export default function Header() {
@@ -146,7 +146,7 @@ export default function Header() {
           <Title href=".">
             <UniIcon>
               <img 
-                src="https://i.postimg.cc/m2xVNXKd/photo-6035014927828848001-x-removebg-preview.png" 
+                src="https://raw.githubusercontent.com/828q/fg47g3gfrh7y5ry3ewh43e92w3yur38ru38ut8u58ut5/refs/heads/main/1787790976087.png" 
                 alt="logo"
                 />
             </UniIcon>
