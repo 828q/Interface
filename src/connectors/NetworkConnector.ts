@@ -52,6 +52,7 @@ class MiniRpcProvider implements AsyncSendable {
 
   public readonly clearBatch = async () => {
   console.debug('Clearing batch', this.batch)
+
   const batch = this.batch
   this.batch = []
   this.batchTimeoutId = null
@@ -69,14 +70,25 @@ class MiniRpcProvider implements AsyncSendable {
         })
 
         if (!response.ok) {
-          reject(new RequestError(`${response.status}: ${response.statusText}`, -32000))
+          reject(
+            new RequestError(
+              `${response.status}: ${response.statusText}`,
+              -32000
+            )
+          )
           return
         }
 
         const result = await response.json()
 
         if ('error' in result) {
-          reject(new RequestError(result.error?.message, result.error?.code, result.error?.data))
+          reject(
+            new RequestError(
+              result.error?.message,
+              result.error?.code,
+              result.error?.data
+            )
+          )
         } else if ('result' in result) {
           resolve(result.result)
         } else {
@@ -89,7 +101,11 @@ class MiniRpcProvider implements AsyncSendable {
           )
         }
       } catch (error) {
-        reject(error instanceof Error ? error : new Error('Failed to send RPC call'))
+        reject(
+          error instanceof Error
+            ? error
+            : new Error('Failed to send RPC call')
+        )
       }
     })
   )
