@@ -51,55 +51,49 @@ class MiniRpcProvider implements AsyncSendable {
   }
 
   public readonly clearBatch = async () => {
-    console.debug('Clearing batch', this.batch)
-    const batch = this.batch
-    this.batch = []
-    this.batchTimeoutId = null
-    let response: Response
-    try {
-      response = await fetch(this.url, {
-        method: 'POST',
-        headers: { 'content-type': 'application/json', accept: 'application/json' },
-        body: JSON.stringify(batch.map(item => item.request))
-      })
-    } catch (error) {
-      batch.forEach(({ reject }) => reject(new Error('Failed to send batch call')))
-      return
-    }
+  console.debug('Clearing batch', this.batch)
+  const batch = this.batch
+  this.batch = []
+  this.batchTimeoutId = null
 
-    if (!response.ok) {
-      batch.forEach(({ reject }) => reject(new RequestError(`${response.status}: ${response.statusText}`, -32000)))
-      return
-    }
+  await Promise.all(
+    batch.map(async ({ request, resolve, reject }) => {
+      try {
+        const response = await fetch(this.url, {
+          method: 'POST',
+          headers: {
+            'content-type': 'application/json',
+            accept: 'application/json'
+          },
+          body: JSON.stringify(request)
+        })
 
-    let json
-    try {
-      json = await response.json()
-    } catch (error) {
-      batch.forEach(({ reject }) => reject(new Error('Failed to parse JSON response')))
-      return
-    }
-    const byKey = batch.reduce<{ [id: number]: BatchItem }>((memo, current) => {
-      memo[current.request.id] = current
-      return memo
-    }, {})
-    for (const result of json) {
-      const {
-        resolve,
-        reject,
-        request: { method }
-      } = byKey[result.id]
-      if (resolve && reject) {
+        if (!response.ok) {
+          reject(new RequestError(`${response.status}: ${response.statusText}`, -32000))
+          return
+        }
+
+        const result = await response.json()
+
         if ('error' in result) {
-          reject(new RequestError(result?.error?.message, result?.error?.code, result?.error?.data))
+          reject(new RequestError(result.error?.message, result.error?.code, result.error?.data))
         } else if ('result' in result) {
           resolve(result.result)
         } else {
-          reject(new RequestError(`Received unexpected JSON-RPC response to ${method} request.`, -32000, result))
+          reject(
+            new RequestError(
+              `Received unexpected JSON-RPC response to ${request.method} request.`,
+              -32000,
+              result
+            )
+          )
         }
+      } catch (error) {
+        reject(error instanceof Error ? error : new Error('Failed to send RPC call'))
       }
-    }
-  }
+    })
+  )
+}
 
   public readonly sendAsync = (
     request: { jsonrpc: '2.0'; id: number | string | null; method: string; params?: unknown[] | object },
