@@ -22,101 +22,41 @@ class RequestError extends Error {
   }
 }
 
-interface BatchItem {
-  request: { jsonrpc: '2.0'; id: number; method: string; params: unknown }
-  resolve: (result: any) => void
-  reject: (error: Error) => void
-}
-
 class MiniRpcProvider implements AsyncSendable {
   public readonly isMetaMask: false = false
   public readonly chainId: number
   public readonly url: string
   public readonly host: string
   public readonly path: string
-  public readonly batchWaitTimeMs: number
 
   private nextId = 1
-  private batchTimeoutId: ReturnType<typeof setTimeout> | null = null
-  private batch: BatchItem[] = []
 
-  constructor(chainId: number, url: string, batchWaitTimeMs?: number) {
+  constructor(chainId: number, url: string) {
     this.chainId = chainId
     this.url = url
+
     const parsed = new URL(url)
     this.host = parsed.host
     this.path = parsed.pathname
-    // how long to wait to batch calls
-    this.batchWaitTimeMs = batchWaitTimeMs ?? 50
   }
 
-  public readonly clearBatch = async () => {
-  console.debug('Clearing batch', this.batch)
-
-  const batch = this.batch
-  this.batch = []
-  this.batchTimeoutId = null
-
-  await Promise.all(
-    batch.map(async ({ request, resolve, reject }) => {
-      try {
-        const response = await fetch(this.url, {
-          method: 'POST',
-          headers: {
-            'content-type': 'application/json',
-            accept: 'application/json'
-          },
-          body: JSON.stringify(request)
-        })
-
-        if (!response.ok) {
-          reject(
-            new RequestError(
-              `${response.status}: ${response.statusText}`,
-              -32000
-            )
-          )
-          return
-        }
-
-        const result = await response.json()
-
-        if ('error' in result) {
-          reject(
-            new RequestError(
-              result.error?.message,
-              result.error?.code,
-              result.error?.data
-            )
-          )
-        } else if ('result' in result) {
-          resolve(result.result)
-        } else {
-          reject(
-            new RequestError(
-              `Received unexpected JSON-RPC response to ${request.method} request.`,
-              -32000,
-              result
-            )
-          )
-        }
-      } catch (error) {
-        reject(
-          error instanceof Error
-            ? error
-            : new Error('Failed to send RPC call')
-        )
-      }
-    })
-  )
-}
-
   public readonly sendAsync = (
-    request: { jsonrpc: '2.0'; id: number | string | null; method: string; params?: unknown[] | object },
+    request: {
+      jsonrpc: '2.0'
+      id: number | string | null
+      method: string
+      params?: unknown[] | object
+    },
     callback: (error: any, response: any) => void
   ): void => {
     this.request(request.method, request.params)
-      .then(result => callback(null, { jsonrpc: '2.0', id: request.id, result }))
+      .then(result =>
+        callback(null, {
+          jsonrpc: '2.0',
+          id: request.id,
+          result
+        })
+      )
       .catch(error => callback(error, null))
   }
 
@@ -127,23 +67,63 @@ class MiniRpcProvider implements AsyncSendable {
     if (typeof method !== 'string') {
       return this.request(method.method, method.params)
     }
+
     if (method === 'eth_chainId') {
       return `0x${this.chainId.toString(16)}`
     }
-    const promise = new Promise((resolve, reject) => {
-      this.batch.push({
-        request: {
-          jsonrpc: '2.0',
-          id: this.nextId++,
-          method,
-          params
+
+    const id = this.nextId++
+
+    try {
+      const response = await fetch(this.url, {
+        method: 'POST',
+        headers: {
+          'content-type': 'application/json',
+          accept: 'application/json'
         },
-        resolve,
-        reject
+        body: JSON.stringify({
+          jsonrpc: '2.0',
+          id,
+          method,
+          params: params ?? []
+        })
       })
-    })
-    this.batchTimeoutId = this.batchTimeoutId ?? setTimeout(this.clearBatch, this.batchWaitTimeMs)
-    return promise
+
+      if (!response.ok) {
+        throw new RequestError(
+          `${response.status}: ${response.statusText}`,
+          -32000
+        )
+      }
+
+      const result = await response.json()
+
+      if (result && 'error' in result) {
+        throw new RequestError(
+          result.error?.message || 'RPC request failed',
+          result.error?.code ?? -32000,
+          result.error?.data
+        )
+      }
+
+      if (result && 'result' in result) {
+        return result.result
+      }
+
+      throw new RequestError(
+        `Received unexpected JSON-RPC response to ${method} request.`,
+        -32000,
+        result
+      )
+    } catch (error) {
+      if (error instanceof RequestError) {
+        throw error
+      }
+
+      throw error instanceof Error
+        ? error
+        : new Error('Failed to send RPC call')
+    }
   }
 }
 
@@ -152,18 +132,36 @@ export class NetworkConnector extends AbstractConnector {
   private currentChainId: number
 
   constructor({ urls, defaultChainId }: NetworkConnectorArguments) {
-    invariant(defaultChainId || Object.keys(urls).length === 1, 'defaultChainId is a required argument with >1 url')
-    super({ supportedChainIds: Object.keys(urls).map((k): number => Number(k)) })
+    invariant(
+      defaultChainId || Object.keys(urls).length === 1,
+      'defaultChainId is a required argument with >1 url'
+    )
 
-    this.currentChainId = defaultChainId || Number(Object.keys(urls)[0])
-    this.providers = Object.keys(urls).reduce<{ [chainId: number]: MiniRpcProvider }>((accumulator, chainId) => {
-      accumulator[Number(chainId)] = new MiniRpcProvider(Number(chainId), urls[Number(chainId)])
+    super({
+      supportedChainIds: Object.keys(urls).map((k): number => Number(k))
+    })
+
+    this.currentChainId =
+      defaultChainId || Number(Object.keys(urls)[0])
+
+    this.providers = Object.keys(urls).reduce<{
+      [chainId: number]: MiniRpcProvider
+    }>((accumulator, chainId) => {
+      accumulator[Number(chainId)] = new MiniRpcProvider(
+        Number(chainId),
+        urls[Number(chainId)]
+      )
+
       return accumulator
     }, {})
   }
 
   public async activate(): Promise<ConnectorUpdate> {
-    return { provider: this.providers[this.currentChainId], chainId: this.currentChainId, account: null }
+    return {
+      provider: this.providers[this.currentChainId],
+      chainId: this.currentChainId,
+      account: null
+    }
   }
 
   public async getProvider(): Promise<MiniRpcProvider> {
